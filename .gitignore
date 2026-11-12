@@ -1,0 +1,32 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node — this repo has no runtime dependencies, but tooling may create these
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+
+# Skill installers / caches
+.skills-cache/
+skills-lock.json
+
+# Local scratch — notes, drafts, retrieved source dumps
+scratch/
+drafts/
+*.local.md
+
+# Never commit credentials or personal data
+.env
+.env.*
+*.token
+*.key
