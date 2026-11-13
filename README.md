@@ -1,5 +1,11 @@
 # brewphase-life-path
 
+> **Moved.** This skill now lives in the BrewPhase repository:
+> [`banmu123/BrewPhase/skills/brewphase-life-path`](https://github.com/banmu123/BrewPhase/tree/main/skills/brewphase-life-path).
+>
+> This repository is archived and no longer maintained. Install from BrewPhase
+> instead — the content here will not receive fixes.
+
 A cross-agent skill for thinking about life direction through the **verified life
 paths of real people** — from ancient history to people still alive — instead of
 through motivational quotes.

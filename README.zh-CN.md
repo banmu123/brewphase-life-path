@@ -1,5 +1,10 @@
 # brewphase-life-path
 
+> **已迁移。** 这个 skill 现在放在 BrewPhase 主仓库：
+> [`banmu123/BrewPhase/skills/brewphase-life-path`](https://github.com/banmu123/BrewPhase/tree/main/skills/brewphase-life-path)。
+>
+> 本仓库已归档、不再维护。请从 BrewPhase 安装——这里的副本不会再有修正。
+
 一套跨 Agent 的 Skill：借**真实人物的可验证人生路径**来思考自己的人生方向——
 从古代到此刻仍在世的人，而不是一句励志语录。
 
