@@ -71,6 +71,64 @@ Once installed, you should not need to invoke it by name. The `description` in
 the conversation is about direction, transition, feeling stuck, or learning from
 someone else's life.
 
+## Usage
+
+Once installed, you do not invoke it by name. Ask about your situation in
+ordinary language, and the skill is selected when the question is about
+**direction** rather than about a task. You do not need to name a person, a
+framework, or the skill.
+
+### Prompts that work
+
+| You want | Say something like |
+|---|---|
+| Orient a stuck situation | "I've been in the same job for six years. It's fine, but I don't know where I'm going." |
+| Weigh a transition | "I want to leave and build something of my own, but I have one year of savings." |
+| Learn from a specific kind of life | "How did people build a career before formal credentials existed?" |
+| Test feasibility | "Is this realistic in three to five years?" |
+| Rebuild after failure | "My first attempt failed and cost me a lot. How did others recover?" |
+| Narrow the frame | "Only look at Japan — don't bring in other countries." |
+
+### What you get
+
+A full analysis has a fixed shape:
+
+1. where you are now, and what the real question is
+2. where you want to go, and what is still unclear about it
+3. four to six people worth studying — each with background, what they actually
+   did, what made it possible, what it cost, what transfers, what does not
+4. two or three routes that fit your constraints, each with its cost and its
+   early failure signal
+5. time as ranges under three scenarios, plus what cannot be estimated
+6. one to three next actions
+7. what not to do now, and when to redo the analysis
+
+**Length scales with the question.** "Should I take this job?" gets four short
+sections; "I don't know what to do with my life" gets the full report. If you get
+eight sections for a small decision, that is a bug — say so.
+
+### Steering it
+
+- *"Keep it short"* — drops to the medium or short form
+- *"Only people from South Asia"* — narrows coverage, and states what that costs
+  analytically
+- *"Skip the famous founders"* — changes who gets selected, not just the framing
+- *"Just the next steps"* — skips the research sections
+- *"Write this down as my direction"* — needs BrewPhase MCP with
+  `direction:propose`; it writes a **draft** that you confirm in the app
+
+### Requirements and limits
+
+- **Live search is required** for real research. Without it, the skill says so
+  plainly and offers the framework instead — it will not pretend to have
+  searched, and it will not cite sources from memory.
+- **BrewPhase is optional.** Connected, the analysis can read your own confirmed
+  current state, directions, stages and work context. Without it, it works from
+  the conversation alone.
+- **It will not decide for you.** It gives routes and trade-offs; the choice
+  stays yours. It will also refuse to give a success probability or a date for a
+  life outcome — that refusal is by design, not a limitation to work around.
+
 ## Optional: connect BrewPhase
 
 The skill works without BrewPhase, using only what you say in conversation. If
