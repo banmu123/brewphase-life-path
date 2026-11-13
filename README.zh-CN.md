@@ -41,21 +41,55 @@ BrewPhase Life Path 不是一个励志故事集，而是一套方法：把你的
 - 不改你的 BrewPhase 数据：它只能写**草稿**，需要你在应用内确认
 - 不写励志内容，也不拿别人的成就制造焦虑
 
-## 安装
+## 开始使用
 
-Canonical 文件只有一份：`skills/brewphase-life-path/SKILL.md`。
+### 1.1 用 npx 装
 
 ```bash
 npx skills add banmu123/brewphase-life-path
 ```
 
-其他位置的对应关系：
+适用于遵循 `skills/<name>/SKILL.md` 约定的 Agent。**它到不了 WorkBuddy**，见 1.3。
 
-| Agent | 路径 | 说明 |
-|---|---|---|
-| Codex / `.agents` 约定 | `.agents/skills/brewphase-life-path`（本仓库内为软链） | 见 [adapters/codex](adapters/codex/README.md) |
-| Claude Code / 兼容实现 | 把 `skills/brewphase-life-path` 复制或软链到你的 skills 目录 | — |
-| WorkBuddy | 见 [adapters/workbuddy](adapters/workbuddy/README.md) | 导入方式**尚未验证**，不要假定上面的 CLI 能装进 WorkBuddy |
+### 1.2 让 Agent 自己装
+
+把这段贴给 Agent：
+
+> 帮我安装这个 skill：https://github.com/banmu123/brewphase-life-path
+> 读 `skills/brewphase-life-path/references/install.md`，按里面的步骤安装。
+
+那份文件是写给 Agent 看的：它会找 skills 目录、决定用软链还是复制、逐个核对文件
+是否到位，并处理可选的那一步 MCP 接入。这条路最不容易出错——Agent 能直接看你机器
+上的真实情况，而不是猜。
+
+### 1.3 WorkBuddy
+
+WorkBuddy 从 `~/.workbuddy/skills/`（或 `<workspace>/.workbuddy/skills/`）读 skill。
+两条命令，然后重启应用：
+
+```bash
+git clone https://github.com/banmu123/brewphase-life-path ~/brewphase-life-path
+ln -s ~/brewphase-life-path/skills/brewphase-life-path ~/.workbuddy/skills/brewphase-life-path
+```
+
+Windows 上 `ln -s` 需要开发者模式。对应的 PowerShell 写法、不建软链直接复制的做法、
+装完怎么验证，以及**怎么接 BrewPhase MCP**（让 skill 能读你自己已确认的方向和工作
+上下文），都在 [adapters/workbuddy](adapters/workbuddy/README.md)。
+
+然后用一句应该会命中的话试：
+
+> 我在现在这份工作里待了六年，说不上差，但也不觉得自己在往哪里走。
+
+如果回答里出现几个不同地域、不同时代的人，每个人都有成立条件和代价，说明装好了。
+如果只是泛泛的鼓励，说明没加载上——去适配文档的排查表里对一下。
+
+### 1.4 其他 Agent
+
+| Agent | 位置 |
+|---|---|
+| Codex / `.agents` 约定 | `.agents/skills/brewphase-life-path`（本仓库内为软链）——见 [adapters/codex](adapters/codex/README.md) |
+| Claude Code / 兼容实现 | 把 `skills/brewphase-life-path` 复制或软链到 `~/.claude/skills/` |
+| 其他 | 让 Agent 读 `references/install.md` |
 
 装好之后不需要手动点名调用。`SKILL.md` 的 `description` 是按「用户意图匹配」
 写的：当对话涉及方向、转型、卡住、想参考某个人物的经历时，Agent 应当自动选中它。
@@ -139,7 +173,8 @@ skills/brewphase-life-path/
     ├── path-planning.md              # 路线、顺序、下一步
     ├── forecast-guidelines.md        # 区间、情景、不该预测什么
     ├── brewphase-mcp.md              # 读取用户自己的上下文
-    └── response-template.md          # 三种输出体量
+    ├── response-template.md          # 三种输出体量
+    └── install.md                    # 给 Agent 安装用（非运行时）
 ```
 
 `SKILL.md` 刻意写得短：它只决定**要不要做**和**按什么顺序做**。方法在

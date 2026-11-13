@@ -149,6 +149,9 @@ Read only what the current request needs — these files are long on purpose.
 | Reading the user's own BrewPhase data | `brewphase-mcp.md` |
 | Shaping the final answer | `response-template.md` |
 
+`install.md` is not a runtime reference — read it only when a user asks you to
+install or configure this skill.
+
 For a one-line question, load nothing. For a full path analysis, load the first
 five at minimum.
 

@@ -50,21 +50,59 @@ always ranges with stated assumptions, never dates or probabilities.
 - No motivational content, and no anxiety manufactured from other people's
   achievements
 
-## Install
+## Get started
 
-The canonical skill lives at `skills/brewphase-life-path/SKILL.md`.
+### 1.1 Install the skill
 
 ```bash
 npx skills add banmu123/brewphase-life-path
 ```
 
-Other layouts:
+This works for agents that follow the `skills/<name>/SKILL.md` convention. It
+does **not** reach every agent — for WorkBuddy, see 1.3.
 
-| Agent | Path | Notes |
-|---|---|---|
-| Codex / `.agents` convention | `.agents/skills/brewphase-life-path` (symlink in this repo) | See [adapters/codex](adapters/codex/README.md) |
-| Claude Code / compatible | copy or symlink `skills/brewphase-life-path` into your skills directory | — |
-| WorkBuddy | see [adapters/workbuddy](adapters/workbuddy/README.md) | Import path is **not** verified; do not assume the CLI above installs it |
+### 1.2 Let your agent install it
+
+Paste this into your agent:
+
+> Set up brewphase-life-path for me: https://github.com/banmu123/brewphase-life-path
+> Read `skills/brewphase-life-path/references/install.md` and follow the steps to install it.
+
+That file is written for an agent: it finds the skills directory, decides between
+symlink and copy, verifies every file landed, and walks through the optional MCP
+step. This is the path least likely to go wrong, because the agent can inspect
+your actual filesystem instead of guessing.
+
+### 1.3 WorkBuddy
+
+WorkBuddy reads skills from `~/.workbuddy/skills/` (or
+`<workspace>/.workbuddy/skills/`). Two commands, then restart:
+
+```bash
+git clone https://github.com/banmu123/brewphase-life-path ~/brewphase-life-path
+ln -s ~/brewphase-life-path/skills/brewphase-life-path ~/.workbuddy/skills/brewphase-life-path
+```
+
+Windows needs Developer Mode for `ln -s`; the PowerShell equivalent is in
+[adapters/workbuddy](adapters/workbuddy/README.md), along with copying without
+symlinks, verification, and **how to connect BrewPhase MCP** so the skill can
+read your own direction and work context.
+
+Then ask something that should match:
+
+> 我在现在这份工作里待了六年，说不上差，但也不觉得自己在往哪里走。
+
+If the answer studies several people from different regions and eras, with
+conditions and costs for each, it is working. Generic encouragement means it was
+not loaded — see the troubleshooting table in the adapter doc.
+
+### 1.4 Other agents
+
+| Agent | Where |
+|---|---|
+| Codex / `.agents` convention | `.agents/skills/brewphase-life-path` (symlink in this repo) — [adapters/codex](adapters/codex/README.md) |
+| Claude Code / compatible | copy or symlink `skills/brewphase-life-path` into `~/.claude/skills/` |
+| Anything else | ask the agent to read `references/install.md` |
 
 Once installed, you should not need to invoke it by name. The `description` in
 `SKILL.md` is written so that agents matching on user intent will select it when
@@ -160,7 +198,8 @@ skills/brewphase-life-path/
     ├── path-planning.md              # routes, sequencing, next actions
     ├── forecast-guidelines.md        # ranges, scenarios, what not to predict
     ├── brewphase-mcp.md              # reading the user's own context
-    └── response-template.md          # three output sizes
+    ├── response-template.md          # three output sizes
+    └── install.md                    # for agents installing this skill (not runtime)
 ```
 
 `SKILL.md` is deliberately short: it decides *whether* to act and *in what
